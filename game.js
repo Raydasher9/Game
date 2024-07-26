@@ -1,4 +1,149 @@
-const player = {}
+const config = {
+  type: Phaser.AUTO,
+  width: 800,
+  height: 600,
+  backgroundColor: '#4488aa',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 300 },
+      debug: false
+    }
+  },
+  scene: {
+    preload: preload,
+    create: create,
+    update: update
+  }
+};
+
+function preload() {
+  this.load.image('bg', 'background.png'); // Correct if images are in the same folder as game.js
+  this.load.image('player', 'player.png');
+  this.load.image('villain', 'villain.png');
+  this.load.image('platform', 'platform.png');
+}
+
+function create() {
+  this.add.image(400, 300, 'bg'); // Adding background image
+  this.add.image(200, 150, 'player'); // Adding player image
+  this.add.image(600, 150, 'villain'); // Adding villain image
+  this.add.image(400, 500, 'platform'); // Adding platform image
+  
+  // Example of adding a sprite with physics
+  player = this.physics.add.sprite(400, 300, 'player');
+  this.cursors = this.input.keyboard.createCursorKeys();
+}
+
+function update() {
+  if (this.cursors.right.isDown) {
+    player.setVelocityX(200);
+  } else if (this.cursors.left.isDown) {
+    player.setVelocityX(-200);
+  } else {
+    player.setVelocityX(0);
+  }
+
+  if (this.cursors.up.isDown) {
+    player.setVelocityY(-200);
+  } else if (this.cursors.down.isDown) {
+    player.setVelocityY(200);
+  } else {
+    player.setVelocityY(0);
+  }
+}
+
+const game = new Phaser.Game(config);
+
+
+
+
+
+
+
+
+
+
+/*<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+    Platformer
+  </title>
+  </head>
+  <body>
+    This is my Platformer
+    <script src="phaser.min.js"></script>
+   <script src='game.js'></script>
+  </body>
+</html>
+
+
+
+
+const config = {
+  type: Phaser.AUTO,
+  width: 800,
+  height: 600,
+  backgroundColor: '#4488aa',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 300 },
+      debug: false
+    }
+  },
+  scene: {
+    preload: preload,
+    create: create,
+    update: update
+  }
+};
+
+function preload() {
+  this.load.image('bg', 'background.png'); // Ensure paths are correct
+  this.load.image('player', 'player.png');
+  this.load.image('villain', 'villain.png');
+  this.load.image('platform', 'platform.png');
+}
+
+function create() {
+  this.add.image(400, 300, 'bg'); // Adding background image
+  this.add.image(200, 150, 'player'); // Adding player image
+  this.add.image(600, 150, 'villain'); // Adding villain image
+  this.add.image(400, 500, 'platform'); // Adding platform image
+  
+  // Example of adding a sprite with physics
+  player = this.physics.add.sprite(400, 300, 'player');
+  this.cursors = this.input.keyboard.createCursorKeys();
+}
+
+function update() {
+  if (this.cursors.right.isDown) {
+    player.setVelocityX(200);
+  } else if (this.cursors.left.isDown) {
+    player.setVelocityX(-200);
+  } else {
+    player.setVelocityX(0);
+  }
+
+  if (this.cursors.up.isDown) {
+    player.setVelocityY(-200);
+  } else if (this.cursors.down.isDown) {
+    player.setVelocityY(200);
+  } else {
+    player.setVelocityY(0);
+  }
+}
+
+const game = new Phaser.Game(config);*/
+
+
+
+
+
+
+/*const player = {}
 
 preload () {
 this.add.image('bg', 'background.png')
@@ -54,4 +199,4 @@ const config = {
 
 
 
-const game = new Phaser.Game(config)
+const game = new Phaser.Game(config)*/
